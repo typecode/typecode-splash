@@ -13,15 +13,6 @@ var app = {
     console.log('app.initialize');
     app.Y = Y;
     app.Y.Node.one('title').setContent(app.name+" - "+app.version);
-    app.setupevents();
-    
-    console.log(app.Y.Node.one('#splash-mini'))
-
-  }
-  
-  app.setupevents = function(){
-    console.log('app.setupevents');
     app.Y.augment(app,app.Y.EventTarget);
   }
-
   
