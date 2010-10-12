@@ -1,5 +1,5 @@
 * { margin:0px; padding:0px; }
-body { font-family:'Arial Black',Helvetica,sans-serif;overflow:hidden;  }
+body { font-family:Helvetica,Arial,sans-serif;overflow:hidden;  }
 
 a{ color:#6198bf;  }
 a:visited{ color:#6198bf;  }
@@ -11,8 +11,7 @@ a:visited{ color:#6198bf;  }
 
 .splash.big { font-size:5em;color:#efefef;top:-0.5%;left:-0.5%;width:102%;height:102%;line-height:0.85em;
  word-wrap: break-word; text-align:justify;overflow:hidden; }
- .splash.big a{ position:fixed; bottom:0.2em; left:0px; text-align:center; width:100%; 
-   font-family:Helvetica,sans-serif;  }
+ .splash.big a{ position:fixed; bottom:0.2em; left:0px; text-align:center; width:100%; }
 
 .splash.mini { font-size:2em;color:#0d0d0d; line-height:1.1em; text-align:justify;
   width:15em;top:30%;right:15%; font-family:'Times New Roman', Times; }
