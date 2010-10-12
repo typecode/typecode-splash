@@ -11,7 +11,7 @@ a:visited{ color:#6198bf;  }
 
 #splash { font-size:5em;color:#efefef;top:-0.5%;left:-0.5%;width:102%;height:102%;line-height:0.85em;
  word-wrap: break-word; text-align:justify;overflow:hidden; }
- #splash a{ position:fixed; bottom:0px; left:0px; text-align:center; width:100%;  }
+ #splash a{ position:fixed; bottom:0.2em; left:0px; text-align:center; width:100%;  }
 
 #splash-mini { font-size:2em; line-height:1.1em; text-align:justify;
   width:15em;top:30%;right:15%; font-family:'Times New Roman', Times; }
