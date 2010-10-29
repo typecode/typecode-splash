@@ -5,30 +5,50 @@ if(!tc){ var tc = {}; }
   if(!tc.particle.context){ tc.particle.context = {}; }
   
   tc.particle.context.canvas = function(app,dom,options){
-    var _me;
+    var _me, buffers, drawingBuffer;
     _me = dom;
     
-    this.options = app.Y.merge({
+    _me.options = app.Y.merge({
       
     },options);
     
-    
     this.initialize = function(){
       tc.util.log('tc.particle.context.canvas.initialize');
-      _me.canvas = _me._node.getContext('2d');
-      _me.bounds = this.options.bounds;
+      drawingBuffer = 0;
+      buffers = dom.getElementsByTagName('canvas')._nodes;
+      
+      _me.swap_buffers();
+      _me.bounds = _me.options.bounds;
       return _me;
     }
     
-    _me.draw_particles = function(particles,func){
+    _me.draw_particles = function(particles,func,callback){
       var i;
-      _me.canvas.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      _me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
       for(i = 0; i < particles.length; i++){
-        _me.particles[i].draw(_me.context,this.frame);
         if(app.Y.Lang.isFunction(func)){
-          func(particle,_me.canvas);
+          func.call(_me,particles[i]);
         }
       }
+      _me.swap_buffers();
+      if(callback){
+        callback();
+      }
+    }
+    
+    _me.draw_particle = function(particle,func){
+      var i;
+      //_me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      if(app.Y.Lang.isFunction(func)){
+        func.call(_me,particle);
+      }
+    }
+    
+    _me.swap_buffers = function(){
+      buffers[1-drawingBuffer].style.visibility='hidden';
+      buffers[drawingBuffer].style.visibility='visible';
+      drawingBuffer = 1 - drawingBuffer;
+      _me.context = buffers[drawingBuffer].getContext('2d');
     }
     
     return this.initialize();

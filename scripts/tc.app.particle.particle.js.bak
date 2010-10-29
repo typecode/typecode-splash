@@ -3,7 +3,7 @@ if(!tc){ var tc = {}; }
 (function(tc) {
   if(!tc.particle){ tc.particle = {}; }
   
-  tc.particle.particle = function(options){
+  tc.particle.particle = function(app,options){
     var _me, o;
     _me = this;
     
@@ -11,7 +11,7 @@ if(!tc){ var tc = {}; }
         vel,
         frc;
     
-    _me.options = {
+    this.options = app.Y.merge({
       pos:{x:0,y:0},
       vel:{x:0,y:0},
       frc:{x:0,y:0},
@@ -29,14 +29,7 @@ if(!tc){ var tc = {}; }
       opacity:0.50,
       attraction_coefficient: 1.0,
       data:{}
-    };
-    
-    (function(){
-      var i;
-      for(i in options){
-        _me.options[i] = options[i];
-      }
-    })();
+    },options);
     
     o = this.options;
     
@@ -49,6 +42,11 @@ if(!tc){ var tc = {}; }
         _me.anchor = Vector.create([o.anchor.x,o.anchor.y]);
       }
       _me.hovered = false;
+      if(_me.options.opacity < 1.0){
+        _me.fill = "rgba("+tc.util.getRGBFromHex('r',o.color)+","+tc.util.getRGBFromHex('g',o.color)+","+tc.util.getRGBFromHex('b',o.color)+","+o.opacity+")"
+      } else {
+        _me.fill = "#"+o.color
+      }
     }
     
     _me.worker = function(new_worker){
@@ -104,8 +102,8 @@ if(!tc){ var tc = {}; }
     }
     
     _me.add_forces = function(forces){
-      var i,distance, length, pct, normal_distance;
-      for(i in forces){
+      var distance, length, pct, normal_distance;
+      for(var i = 0; i < forces.length; i++){
         distance = _me.pos.subtract(forces[i].pos);
         length = Math.sqrt(distance.dot(distance));
         if(length < forces[i].radius){
@@ -216,13 +214,10 @@ if(!tc){ var tc = {}; }
       last_pos = _me.pos;
     }
     
-    _me.get = function(){
-      var me;
-      me = {
-        pos:[_me.pos.elements[0],_me.pos.elements[1]],
-        radius:o.radius
+    _me.draw = function(context){
+      if(app.Y.Lang.isFunction(this.options.draw)){
+        this.options.draw.call(_me,context);
       }
-      return me;
     }
     
     return this.initialize();

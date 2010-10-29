@@ -3,6 +3,9 @@ body { font-family:Helvetica,Arial,sans-serif;overflow:hidden; font-size:13px;  
 a{ color:#6198bf;  }
 a:visited{ color:#6198bf;  }
 
+canvas { visibility: hidden; position:absolute;
+	top:0px;left:0px; }
+
 .tag { background-image:url('../images/tag5.2.png');background-repeat:no-repeat;color:transparent;
   position:absolute; top:-10px; left:150px; width:219px;height:100px;z-index:100; }
 
