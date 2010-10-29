@@ -70,6 +70,7 @@ if(!tc){ var tc = {}; }
       });
       _context.start();
       
+<<<<<<< HEAD
       _context.add_force({
         id:'mouseforce',
         pos:{
@@ -79,6 +80,9 @@ if(!tc){ var tc = {}; }
         strength:-3,
         radius:200
       });
+=======
+      mouseforce = _context.add_global_force({x:500,y:500},-6,150);
+>>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
       
       return _me;
       

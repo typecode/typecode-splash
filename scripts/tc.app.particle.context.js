@@ -27,6 +27,7 @@ if(!tc){ var tc = {}; }
     this.initialize = function(){
       tc.util.log('tc.particle.context.initialize');
       
+<<<<<<< HEAD
       //WebWorker!!!!
       if(Worker){
         tc.util.log("Starting WebWorker");
@@ -77,6 +78,11 @@ if(!tc){ var tc = {}; }
       }
     }
     
+=======
+      return _me;
+    }
+    
+>>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
     _me.updateBounds = function(){
       tc.util.log('tc.particle.context[_me.updateBounds]');
       
@@ -97,6 +103,7 @@ if(!tc){ var tc = {}; }
     
     _me.add_particle = function(particle){
       //tc.util.log('tc.particle.context[_me.add_particle]');
+<<<<<<< HEAD
       
       _me.worker.postMessage({
         action:'addParticle',
@@ -105,6 +112,10 @@ if(!tc){ var tc = {}; }
         }
       });
       
+=======
+      _me.particles.push(particle);
+      return _me.particles[_me.particles.length-1];
+>>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
     }
     
     _me.add_force = function(force){
@@ -121,21 +132,49 @@ if(!tc){ var tc = {}; }
     
     _me.start = function(){
       tc.util.log('tc.particle.context[_me.start]');
+<<<<<<< HEAD
       
       _me.worker.postMessage({
         action:'start',
         data:{}
       });
       
+=======
+      _me.paused = false;
+      _me.mouse_pos = null;
+      _me.mouse_down_pos = null;
+      if(_me.stopped){
+        _me.stopped = false;
+        _me.timer = app.Y.later(1000/30,_me,_me.update,{},true);
+      }
+    }
+    
+    _me.pause = function(){
+      tc.util.log('tc.particle.context[_me.pause]');
+      _me.paused = true;
+>>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
     }
     
     _me.stop = function(){
       tc.util.log('tc.particle.context[_me.stop]');
+<<<<<<< HEAD
       
       _me.worker.postMessage({
         action:'stop',
         data:{}
       });
+=======
+      _me.stopped = true;
+      _me.timer.cancel();
+    }
+    
+    function _draw(){
+      //tc.util.log('tc.particle.context[_me.draw]');
+      _me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      for(var i = 0; i < _me.particles.length; i++){
+        _me.particles[i].draw(_me.context,this.frame);
+      }
+>>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
     }
     
     return this.initialize();
