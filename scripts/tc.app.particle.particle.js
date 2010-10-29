@@ -4,7 +4,7 @@ if(!tc){ var tc = {}; }
   if(!tc.particle){ tc.particle = {}; }
   
   tc.particle.particle = function(app,options){
-    var _me, o;
+    var _me, o, damping;
     _me = this;
     
     var pos,last_pos,
@@ -26,7 +26,7 @@ if(!tc){ var tc = {}; }
         context.closePath();
       },
       color:"000000",
-      opacity:0.50,
+      opacity:0.75,
       attraction_coefficient: 1.0,
       data:{}
     },options);
@@ -99,6 +99,7 @@ if(!tc){ var tc = {}; }
     
     _me.reset_forces = function(){
       frc.setElements([0, 0]);
+      damping = _me.options.damping;
     }
     
     _me.add_forces = function(forces){
@@ -107,7 +108,7 @@ if(!tc){ var tc = {}; }
         distance = _me.pos.subtract(forces[i].pos);
         length = Math.sqrt(distance.dot(distance));
         if(length < forces[i].radius){
-          pct = 1 - (length / forces[i].radius);
+          pct = (1 - (length / forces[i].radius)) * 20/o.radius ;
           normal_distance = distance.multiply(1/length);
           frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 
             forces[i].strength * pct * o.attraction_coefficient;
@@ -122,16 +123,26 @@ if(!tc){ var tc = {}; }
       var distance, length, pct, normal_distance;
       distance = _me.pos.subtract(_me.anchor);
       length = Math.sqrt(distance.dot(distance));
-      pct = 1.0 - (length / 1000);
+      
+      
+      //if(length < 50){
+      //  pct = length / 50;
+      //  damping = pct;
+      //} else {
+      //  pct = 1.0 - (length / 1000);
+      //}
+      
+      pct = (length / 1000) * 20/o.radius;
+      
       normal_distance = distance.multiply(1/length);
-      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 2 * pct;
-      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 2 * pct;
+      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 4 * pct;
+      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 4 * pct;
     }
     
     _me.collide_with_particles = function(particles,j){
       for(var i = 0; i < particles.length; i++){
         if(i != j){
-          var distance = _me.pos.subtract(particles[i].pos())
+          var distance = _me.pos.subtract(particles[i].pos)
           var length = Math.sqrt(distance.dot(distance))
           if(length < (o.radius + particles[i].radius())+2){
             var pct = 1 - (length / (o.radius + particles[i].radius() + 2))
@@ -149,7 +160,7 @@ if(!tc){ var tc = {}; }
     }
     
     _me.add_damping = function(){
-      vel = vel.multiply(_me.options.damping);
+      vel = vel.multiply(damping);
     }
     
     _me.contains_vector = function(_mp){

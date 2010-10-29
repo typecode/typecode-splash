@@ -39,41 +39,7 @@ if(!tc){ var tc = {}; }
       _me.context = _me._node.getContext('2d');
       _me.bounds = this.options.bounds;
       
-      //WebWorker!!!!
-      if(Worker){
-        tc.util.log("Starting WebWorker");
-        _me.worker = new Worker('scripts/tc.app.particle.context.worker.js');
-        _me.worker.onmessage = function(e){
-          _me.workerMessageHandler(e.data);
-        };
-      } else {
-        tc.util.log("No WebWorker Available");
-        _me.worker = new tc.particle.context.worker();
-      }
-      
-      _me.canvas = new tc.particle.context.canvas(app,dom,options);
-      
-      _me.worker.postMessage({
-        action:'start',
-        data:{
-          options:{
-            
-          }
-        }
-      });
-      
       return _me;
-    }
-    
-    _me.workerMessageHandler = function(d){
-      if(d.action){
-        switch(d.action){
-          case 'particlesUpdated':
-            //_me.canvas.draw_particles(d.data.particles,func);
-            //console.log(d.data);
-            break;
-        }
-      }
     }
     
     _me.updateBounds = function(){
@@ -88,14 +54,6 @@ if(!tc){ var tc = {}; }
     
     _me.add_particle = function(particle){
       //tc.util.log('tc.particle.context[_me.add_particle]');
-      
-      _me.worker.postMessage({
-        action:'addParticle',
-        data:{
-          particle:"ABC"
-        }
-      });
-      
       _me.particles.push(particle);
       return _me.particles[_me.particles.length-1];
     }
@@ -144,12 +102,6 @@ if(!tc){ var tc = {}; }
       _me.mouse_down_pos = null;
       if(_me.stopped){
         _me.stopped = false;
-        _me.worker.postMessage({
-          action:'play',
-          data:{
-            
-          }
-        });
         _me.timer = app.Y.later(1000/30,_me,_me.update,{},true);
       }
     }
@@ -162,12 +114,6 @@ if(!tc){ var tc = {}; }
     _me.stop = function(){
       tc.util.log('tc.particle.context[_me.stop]');
       _me.stopped = true;
-      _me.worker.postMessage({
-        action:'stop',
-        data:{
-          
-        }
-      });
       _me.timer.cancel();
     }
     
