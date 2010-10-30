@@ -3,13 +3,8 @@ if(!tc){ var tc = {}; }
 (function(tc) {
   if(!tc.particle){ tc.particle = {}; }
   
-<<<<<<< HEAD
   tc.particle.particle = function(options){
-    var _me, o;
-=======
-  tc.particle.particle = function(app,options){
     var _me, o, damping;
->>>>>>> 8f8c78ecd909ceca79bfa0a54d6760fbabaa07d3
     _me = this;
     
     var pos,last_pos,
