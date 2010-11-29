@@ -55,7 +55,7 @@ if(!tc){ var tc = {}; }
     _me.add_particle = function(particle){
       //tc.util.log('tc.particle.context[_me.add_particle]');
       _me.particles.push(particle);
-      return _me.particles[_me.particles.length-1];
+      //return _me.particles[_me.particles.length-1];
     }
     
     _me.add_global_force = function(pos, strength, radius){
@@ -76,6 +76,7 @@ if(!tc){ var tc = {}; }
       //tc.util.log('tc.particle.context[_me.update]');
       _me.frame++;
       if(!_me.stopped){
+        
         for(i = 0; i < _me.particles.length; i++){
           _me.particles[i]['reset_forces']();
           _me.particles[i]['add_forces'](_me.forces);
