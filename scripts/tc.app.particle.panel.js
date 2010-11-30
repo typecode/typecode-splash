@@ -32,7 +32,7 @@ if(!tc){ var tc = {}; }
     this.add_squares = function(arr){
       var i;
       for(i = 0; i < arr.length; i++){
-        if(arr[i].s < 4){ return; }
+        if(arr[i].s < 0){ return; }
         (function(sq){
           var i, j, ax, ay;
           ax = ( sq.x );
@@ -100,7 +100,7 @@ if(!tc){ var tc = {}; }
       });
       _context.start();
       
-      mouseforce = _context.add_global_force({x:500,y:500},-6,150);
+      mouseforce = _context.add_global_force({x:500,y:500},-15,150);
       
       return _me;
       

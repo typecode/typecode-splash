@@ -17,7 +17,7 @@ if(!tc){ var tc = {}; }
       frc:{x:0,y:0},
       anchored:false,
       anchor:{x:0,y:0},
-      damping:0.95,
+      damping:0.80,
       radius:5,
       draw:function(context){
         context.beginPath();
@@ -136,17 +136,17 @@ if(!tc){ var tc = {}; }
       length = Math.sqrt(distance.dot(distance));
       
       if(length <= 0.5){
-        _me.jitter = {
-          x:tc.util.rand(-2,2),
-          y:tc.util.rand(-2,2)
-        }
+        // _me.jitter = {
+        //   x:tc.util.rand(-2,2),
+        //   y:tc.util.rand(-2,2)
+        // }
         return;
       }
       
       pct = (length / 1000) * 20/_me.radius;
       normal_distance = distance.multiply(1/length);
-      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 4 * pct;
-      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 4 * pct;
+      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 10 * pct;
+      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 10 * pct;
     }
     
     _me.collide_with_particles = function(particles,j){
