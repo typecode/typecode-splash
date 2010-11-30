@@ -18,7 +18,7 @@ if(!tc){ var tc = {}; }
     this.add_squares = function(arr){
       var i;
       for(i = 0; i < arr.length; i++){
-        if(arr[i].s < 3){ return; }
+        if(arr[i].s < 2){ return; }
         (function(sq){
           var i, j, ax, ay;
           ax = ( sq.x );
@@ -35,8 +35,8 @@ if(!tc){ var tc = {}; }
               x:(_domRef.get('winWidth')/2) + ax,
               y:100 + ay
             },
-            draw:function(context,frame){
-              var diameter = this.options.radius*2;
+            draw:function(context){
+              var diameter = this.radius*2;
               context.fillStyle = this.fill;
               context.fillRect(
                 this.pos.elements[0],

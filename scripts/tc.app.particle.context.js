@@ -103,7 +103,7 @@ if(!tc){ var tc = {}; }
       _me.mouse_down_pos = null;
       if(_me.stopped){
         _me.stopped = false;
-        _me.timer = app.Y.later(1000/30,_me,_me.update,{},true);
+        _me.timer = app.Y.later(1000/20,_me,_me.update,{},true);
       }
     }
     
@@ -122,7 +122,7 @@ if(!tc){ var tc = {}; }
       //tc.util.log('tc.particle.context[_me.draw]');
       _me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
       for(var i = 0; i < _me.particles.length; i++){
-        _me.particles[i].draw(_me.context,this.frame);
+        _me.particles[i].draw(_me.context);
       }
     }
     

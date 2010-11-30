@@ -26,7 +26,7 @@ if(!tc){ var tc = {}; }
         context.closePath();
       },
       color:"000000",
-      opacity:0.75,
+      opacity:0.65,
       attraction_coefficient: 1.0,
       data:{}
     },options);
@@ -42,6 +42,9 @@ if(!tc){ var tc = {}; }
         _me.anchor = Vector.create([o.anchor.x,o.anchor.y]);
       }
       _me.hovered = false;
+      if(o.radius){
+        _me.radius = o.radius;
+      }
       if(_me.options.opacity < 1.0){
         _me.fill = "rgba("+tc.util.getRGBFromHex('r',o.color)+","+tc.util.getRGBFromHex('g',o.color)+","+tc.util.getRGBFromHex('b',o.color)+","+o.opacity+")"
       } else {
@@ -132,7 +135,7 @@ if(!tc){ var tc = {}; }
       //  pct = 1.0 - (length / 1000);
       //}
       
-      pct = (length / 1000) * 20/o.radius;
+      pct = (length / 1000) * 20/_me.radius;
       
       normal_distance = distance.multiply(1/length);
       frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 4 * pct;
@@ -166,7 +169,7 @@ if(!tc){ var tc = {}; }
     _me.contains_vector = function(_mp){
       var distance = _me.pos.subtract(_mp)
       var length = Math.sqrt(distance.dot(distance))
-      if(length < o.radius){
+      if(length < _me.radius){
         return true
       } else {
         return false
