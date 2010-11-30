@@ -137,10 +137,6 @@ if(!tc){ var tc = {}; }
       length = Math.sqrt(distance.dot(distance));
       
       if(length <= 0.5){
-        // _me.jitter = {
-        //   x:tc.util.rand(-2,2),
-        //   y:tc.util.rand(-2,2)
-        // }
         return;
       }
       

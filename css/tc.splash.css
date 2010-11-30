@@ -83,8 +83,8 @@ h1 span { display:none; }
 .content p {
 	font-size: 25px;
 	font-weight:normal;
-	line-height: 35px;
-	margin-bottom: 16px;
+	line-height: 33px;
+	margin-bottom: 20px;
 }
 
 .content p em{

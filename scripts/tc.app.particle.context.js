@@ -143,11 +143,8 @@ if(!tc){ var tc = {}; }
         _me.bounds.max_y
       );
       
-      //console.log(_me.net_energy);
-      
       if(_me.net_energy < 0.2){
         opacity = (0.2/(_me.net_energy < 0.01 ? 0.01 : _me.net_energy)/20);
-        //console.log(opacity);
         _me.context.globalAlpha = opacity - 0.01;
         _me.context.drawImage(
           _me.bg_image,

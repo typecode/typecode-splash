@@ -4,7 +4,7 @@ if(!tc){ var tc = {}; }
   if(!tc.particle){ tc.particle = {}; }
   
   tc.particle.panel = function(app){
-    var _me, _domRef, _context, mouseforce;
+    var _me, _domRef, _context, mouseforce, last_mouse_pos;
     _me = this;
     
     this.template =  "<canvas id='particle-panel'></canvas>";
@@ -88,9 +88,17 @@ if(!tc){ var tc = {}; }
       _domRef.set("height",_domRef.get('winHeight'));
       
       app.Y.one(document).on('mousemove',function(e){
+        var mousepos, tempvec;
         if(mouseforce){
           mouseforce.pos.setElements([e.clientX, e.clientY]);
+          mousepos = Vector.create([e.clientX, e.clientY])
+          if(last_mouse_pos){
+            tempvec = mousepos.subtract(last_mouse_pos);
+            mouseforce.radius = (mouseforce.radius * 0.90) + ((Math.sqrt(tempvec.dot(tempvec))*5) * 0.10);
+          }
+          last_mouse_pos = mousepos;
         }
+        
       });
       
       _context = tc.particle.context(app,_domRef,{});
