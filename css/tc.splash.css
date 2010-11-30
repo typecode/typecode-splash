@@ -86,6 +86,11 @@ h1 span { display:none; }
 	margin-bottom: 16px;
 }
 
+.content p em{
+  color:#333333;
+  font-weight:bold;
+}
+
 .content a{
 	color: #6198bf;
 	text-decoration:none;
