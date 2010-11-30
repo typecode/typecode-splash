@@ -59,7 +59,7 @@ body{
 .content{
 	width: 640px;
 	margin:0px auto;
-	padding: 300px 0 0 10px;
+	padding: 400px 0 0 10px;
 	display:block;
 }
 
@@ -111,4 +111,6 @@ body{
 	line-height: 40px;
 	margin-bottom: 16px;
 }
-                
+
+.particles_wrapper{ position:relative;margin:auto; }
+.particles{ position:absolute;top:0px;left:0px; }
