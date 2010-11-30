@@ -40,7 +40,6 @@ if(!tc){ var tc = {}; }
       if(o.anchored && o.anchor){
         _me.anchor = Vector.create([o.anchor.x,o.anchor.y]);
       }
-      _me.hovered = false;
       if(o.radius){
         _me.radius = o.radius;
       }
@@ -126,13 +125,16 @@ if(!tc){ var tc = {}; }
       distance = _me.pos.subtract(_me.anchor);
       length = Math.sqrt(distance.dot(distance));
       
-      
       //if(length < 50){
       //  pct = length / 50;
       //  damping = pct;
       //} else {
       //  pct = 1.0 - (length / 1000);
       //}
+      
+      if(length <= 0.5){
+        return;
+      }
       
       pct = (length / 1000) * 20/_me.radius;
       
@@ -163,28 +165,6 @@ if(!tc){ var tc = {}; }
     
     _me.add_damping = function(){
       vel = vel.multiply(damping);
-    }
-    
-    _me.contains_vector = function(_mp){
-      var distance = _me.pos.subtract(_mp)
-      var length = Math.sqrt(distance.dot(distance))
-      if(length < _me.radius){
-        return true
-      } else {
-        return false
-      }
-    }
-    
-    _me.no_hover = function(){
-      
-    }
-    
-    _me.hover = function(){
-      vel = vel.multiply(0)
-    }
-    
-    _me.click = function(){
-      
     }
     
     _me.bounce_off_walls = function(bounds){

@@ -55,7 +55,7 @@ if(!tc){ var tc = {}; }
     _me.add_particle = function(particle){
       //tc.util.log('tc.particle.context[_me.add_particle]');
       _me.particles.push(particle);
-      //return _me.particles[_me.particles.length-1];
+      return _me.particles[_me.particles.length-1];
     }
     
     _me.add_global_force = function(pos, strength, radius){

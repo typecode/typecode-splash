@@ -78,40 +78,6 @@ if(!tc){ var tc = {}; }
       mouseforce = _context.add_global_force({x:500,y:500},-6,150);
       
       return _me;
-      
-      //adds a grid of squares:
-      //(function(){
-      //  var i, j, ax, ay;
-      //  for(i = 0; i < 15; i++){
-      //    for(j = 0; j < 15; j++){
-      //      ax = ( (_domRef.get('winWidth')/2-100) + (i * 12) );
-      //      ay = ( (_domRef.get('winHeight')/2-100) + (j * 12) );
-      //    
-      //      _context.add_particle(new tc.particle.particle(app,{
-      //        pos:{
-      //          x:tc.util.rand(0,_domRef.get('winWidth')),
-      //          y:tc.util.rand(0,_domRef.get('winHeight'))
-      //        },
-      //        anchored:true,
-      //        anchor:{
-      //          x:ax,
-      //          y:ay
-      //        },
-      //        draw:function(context,frame){
-      //          context.fillStyle = this.fill;
-      //          context.fillRect(
-      //            this.pos.elements[0]-this.options.radius,
-      //            this.pos.elements[1]-this.options.radius,
-      //            this.options.radius*2,
-      //            this.options.radius*2
-      //          );
-      //        }
-      //      }));
-      //    }
-      //  }
-      //})();
-      //
-      //return _me;
     }
   
   
