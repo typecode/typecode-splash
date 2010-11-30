@@ -52,6 +52,7 @@ if(!tc){ var tc = {}; }
         _me.fill = "#"+o.color;
       }
       _me.jitter = null;
+      _me.norm_dist_from_anchor = 0;
     }
     
     _me.set_anchor_offset = function(offset){
@@ -204,6 +205,7 @@ if(!tc){ var tc = {}; }
     
     _me.update = function(){
       vel = vel.add(frc);
+      _me.norm_dist_from_anchor = pct;
       _me.pos = _me.pos.add(vel);
       if(_me.jitter){
         _me.pos.elements[0] += _me.jitter.x;

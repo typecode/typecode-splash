@@ -38,7 +38,9 @@ if(!tc){ var tc = {}; }
       _me.mouse_down_pos = null;
       _me.context = _me._node.getContext('2d');
       _me.bounds = this.options.bounds;
-      
+      _me.net_energy = 0;
+      _me.bg_image = new Image();
+      _me.bg_image.src = 'images/typecode.png';
       return _me;
     }
     
@@ -54,7 +56,6 @@ if(!tc){ var tc = {}; }
         x:size.width/2,
         y:75
       }
-      tc.util.log(_me.anchor_offset)
       for(i = 0; i < _me.particles.length; i++){
         _me.particles[i]['set_anchor_offset'](_me.anchor_offset);
       }
@@ -83,8 +84,8 @@ if(!tc){ var tc = {}; }
     _me.update = function(){
       //tc.util.log('tc.particle.context[_me.update]');
       _me.frame++;
+      _me.net_energy = 0;
       if(!_me.stopped){
-        
         for(i = 0; i < _me.particles.length; i++){
           _me.particles[i]['reset_forces']();
           _me.particles[i]['add_forces'](_me.forces);
@@ -93,8 +94,10 @@ if(!tc){ var tc = {}; }
           //_me.particles[i]['collide_with_particles'](_me.particles,i);
           _me.particles[i]['add_damping']();
           _me.particles[i]['update']();
+          _me.net_energy = _me.net_energy + _me.particles[i].norm_dist_from_anchor;
         }
       }
+      _me.net_energy = _me.net_energy / _me.particles.length;
       _me.mouse_down_pos = null;
       _draw();
     }
@@ -129,8 +132,10 @@ if(!tc){ var tc = {}; }
     function _draw(){
       //tc.util.log('tc.particle.context[_me.draw]');
       //_me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      var opacity;
       
-      _me.context.fillStyle = 'rgba(255,255,255,0.5)';
+      _me.context.globalAlpha = 1;
+      _me.context.fillStyle = 'rgba(252,252,252,0.5)';
       _me.context.fillRect(
         0,
         0,
@@ -138,6 +143,20 @@ if(!tc){ var tc = {}; }
         _me.bounds.max_y
       );
       
+      //console.log(_me.net_energy);
+      
+      if(_me.net_energy < 10){
+        opacity = (10/(_me.net_energy < 0.01 ? 0.01 : _me.net_energy))/1000;
+        
+        _me.context.globalAlpha = opacity - 0.01;
+        _me.context.drawImage(
+          _me.bg_image,
+          _me.anchor_offset.x-358,
+          _me.anchor_offset.y
+        );
+      }
+      
+      _me.context.globalAlpha = 1 - opacity + 0.01;
       for(var i = 0; i < _me.particles.length; i++){
         _me.particles[i].draw(_me.context);
       }
