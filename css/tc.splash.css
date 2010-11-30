@@ -1,11 +1,25 @@
 @charset "UTF-8";
-/* CSS Document */
 
 body{
 	color: #808080;
 	font: normal normal 100%/100% Helvetica, Arial, Verdana, Tahoma, sans-serif; 
-	}
-	
+}
+
+.masthead { position:relative; margin:auto; }
+h1,
+.fallback .masthead { width:715px; }
+
+h1,
+.particles { position:absolute; top:0; left:0; z-index:0; }
+
+h1 { 
+  display:none; height:204px; top:66px; 
+  background-image:url("../images/typecode.png"); 
+}
+h1 span { display:none; }
+
+.fallback h1 { display:block; }
+.fallback .particles { display:none; }
 
 /*
 .vignette{
@@ -65,6 +79,13 @@ body{
 	z-index:100;
 }
 
+.content p {
+	font-size: 32px;
+	font-weight:normal;
+	line-height: 40px;
+	margin-bottom: 16px;
+}
+
 .content a{
 	color: #6198bf;
 	text-decoration:none;
@@ -78,7 +99,6 @@ body{
 	-webkit-transition-duration: 0.2s, 0.2s;  
  	-webkit-transition-timing-function: linear, ease-in;
 }
-
 .content a:hover{
 	/*border-bottom: 1px dotted #b8b8b8;
 	background-color:#FFF;*/
@@ -93,8 +113,6 @@ body{
 	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#e2e2e2');
 	
 }
-
-
 .content a:active{
 	-webkit-box-shadow:  0 0 5px rgba(0,0,0,.2);
 	-moz-box-shadow:  0 0 5px rgba(0,0,0,.2);
@@ -106,13 +124,3 @@ body{
 	left:1px;
 	outline:0;
 }
-
-.content h2{
-	font-size: 32px;
-	font-weight:normal;
-	line-height: 40px;
-	margin-bottom: 16px;
-}
-
-.particles_wrapper{ position:relative;margin:auto; }
-.particles{ position:absolute;top:0px;left:0px;z-index:0; }
