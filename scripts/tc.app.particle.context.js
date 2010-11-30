@@ -42,20 +42,28 @@ if(!tc){ var tc = {}; }
       return _me;
     }
     
-    _me.updateBounds = function(){
-      tc.util.log('tc.particle.context[_me.updateBounds]');
+    _me.setSize = function(size){
+      tc.util.log('tc.particle.context[_me.setSize]');
       _me.bounds = {
         min_x: 0,
-        max_x: _me.get('winWidth'),
+        max_x: size.width,
         min_y: 0,
-        max_y: _me.get('winHeight') 
+        max_y: size.height 
       };
+      _me.anchor_offset = {
+        x:size.width/2,
+        y:75
+      }
+      tc.util.log(_me.anchor_offset)
+      for(i = 0; i < _me.particles.length; i++){
+        _me.particles[i]['set_anchor_offset'](_me.anchor_offset);
+      }
     }
     
     _me.add_particle = function(particle){
       //tc.util.log('tc.particle.context[_me.add_particle]');
       _me.particles.push(particle);
-      //return _me.particles[_me.particles.length-1];
+      return _me.particles[_me.particles.length-1];
     }
     
     _me.add_global_force = function(pos, strength, radius){
@@ -103,7 +111,7 @@ if(!tc){ var tc = {}; }
       _me.mouse_down_pos = null;
       if(_me.stopped){
         _me.stopped = false;
-        _me.timer = app.Y.later(1000/20,_me,_me.update,{},true);
+        _me.timer = app.Y.later(1000/30,_me,_me.update,{},true);
       }
     }
     
@@ -120,7 +128,16 @@ if(!tc){ var tc = {}; }
     
     function _draw(){
       //tc.util.log('tc.particle.context[_me.draw]');
-      _me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      //_me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
+      
+      _me.context.fillStyle = 'rgba(255,255,255,0.5)';
+      _me.context.fillRect(
+        0,
+        0,
+        _me.bounds.max_x,
+        _me.bounds.max_y
+      );
+      
       for(var i = 0; i < _me.particles.length; i++){
         _me.particles[i].draw(_me.context);
       }

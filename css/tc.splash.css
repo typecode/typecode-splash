@@ -59,8 +59,10 @@ body{
 .content{
 	width: 640px;
 	margin:0px auto;
-	padding: 400px 0 0 10px;
+	padding: 300px 0 50px 10px;
 	display:block;
+	position:relative;
+	z-index:100;
 }
 
 .content a{
@@ -113,4 +115,4 @@ body{
 }
 
 .particles_wrapper{ position:relative;margin:auto; }
-.particles{ position:absolute;top:0px;left:0px; }
+.particles{ position:absolute;top:0px;left:0px;z-index:0; }

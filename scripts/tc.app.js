@@ -12,7 +12,7 @@ var app = {
   app.initialize = function(Y){
     tc.util.log('app.initialize');
     app.Y = Y;
-    app.Y.Node.one('title').setContent(app.name+" - "+app.version);
+    app.Y.Node.one('title').setContent(app.name);
     app.Y.augment(app ,app.Y.EventTarget);
     app.particle_panel = tc.particle.panel(app).render();
     app.particle_panel.add_squares(tc.squares.squares);
