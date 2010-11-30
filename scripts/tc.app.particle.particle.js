@@ -51,6 +51,7 @@ if(!tc){ var tc = {}; }
       } else {
         _me.fill = "#"+o.color;
       }
+      _me.jitter = null;
     }
     
     _me.set_anchor_offset = function(offset){
@@ -135,6 +136,10 @@ if(!tc){ var tc = {}; }
       length = Math.sqrt(distance.dot(distance));
       
       if(length <= 0.5){
+        _me.jitter = {
+          x:tc.util.rand(-2,2),
+          y:tc.util.rand(-2,2)
+        }
         return;
       }
       
@@ -200,6 +205,11 @@ if(!tc){ var tc = {}; }
     _me.update = function(){
       vel = vel.add(frc);
       _me.pos = _me.pos.add(vel);
+      if(_me.jitter){
+        _me.pos.elements[0] += _me.jitter.x;
+        _me.pos.elements[1] += _me.jitter.y;
+        _me.jitter = null;
+      }
     }
     
     _me.draw = function(context){
