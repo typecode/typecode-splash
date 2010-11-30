@@ -66,12 +66,12 @@ if(!tc){ var tc = {}; }
                 diameter,
                 diameter
               );
-              context.fillRect(
-                this.anchor.elements[0]+this.radius,
-                this.anchor.elements[1]+this.radius,
-                1,
-                1
-              )
+              //context.fillRect(
+              //  this.anchor.elements[0]+this.radius,
+              //  this.anchor.elements[1]+this.radius,
+              //  1,
+              //  1
+              //)
             }
           }));
         })(arr[i]);
