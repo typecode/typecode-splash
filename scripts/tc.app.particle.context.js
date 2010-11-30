@@ -85,6 +85,9 @@ if(!tc){ var tc = {}; }
       //tc.util.log('tc.particle.context[_me.update]');
       _me.frame++;
       _me.net_energy = 0;
+      for(i = 0; i < _me.forces.length; i++){
+        _me.forces[i].radius = (_me.forces[i].radius * 0.98);
+      }
       if(!_me.stopped){
         for(i = 0; i < _me.particles.length; i++){
           _me.particles[i]['reset_forces']();
@@ -131,8 +134,7 @@ if(!tc){ var tc = {}; }
     
     function _draw(){
       //tc.util.log('tc.particle.context[_me.draw]');
-      //_me.context.clearRect(0,0,_me.bounds.max_x,_me.bounds.max_y);
-      var opacity;
+      var opacity, i;
       
       _me.context.globalAlpha = 1;
       _me.context.fillStyle = 'rgba(252,252,252,0.5)';
@@ -154,7 +156,8 @@ if(!tc){ var tc = {}; }
       }
       
       _me.context.globalAlpha = 1 - opacity + 0.01;
-      for(var i = 0; i < _me.particles.length; i++){
+      
+      for(i = 0; i < _me.particles.length; i++){
         _me.particles[i].draw(_me.context);
       }
     }
