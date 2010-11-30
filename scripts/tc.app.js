@@ -5,8 +5,7 @@ var app = {
     selector:'#app',
     name:'Type/Code',
     version:0.2,
-    particle_panel:null,
-    browser:null
+    particle_panel:null
   };
   
   app.initialize = function(Y){
@@ -14,11 +13,11 @@ var app = {
     app.Y = Y;
     app.Y.Node.one('title').setContent(app.name);
     app.Y.augment(app ,app.Y.EventTarget);
-    app.browser = app.Y.UA;
-    if (app.browser.webkit) {
+    if (app.Y.UA.webkit) {
       app.particle_panel = tc.particle.panel(app).render();
       app.particle_panel.add_squares(tc.squares.squares);
     } else {
-      
+      tc.util.log('Not webkit...falling back to static logo');
+      app.Y.Node.one('body').addClass('fallback');
     }
   };
