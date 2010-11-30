@@ -33,7 +33,7 @@ h1 span { display:none; }
 	height: 100%;
 	position: fixed;
 	z-index: 9999;
-	width: 100%; 
+	width: 100%;
 	}
              
 
@@ -45,27 +45,27 @@ h1 span { display:none; }
               
 
 .top{
-	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(255, 255, 255, 0), #e1e1e1 );
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e1e1e1), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(255, 255, 255, 0), #ffffff );
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(rgba(255, 255, 255, 0)));
 	top: 0;
 	left:0; 
 	}
                 
 .bottom{
-	background-image: -moz-linear-gradient(100% 100% 90deg, #e1e1e1, rgba(255, 255, 255, 0) );
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(#e1e1e1));
+	background-image: -moz-linear-gradient(100% 100% 90deg, #ffffff, rgba(255, 255, 255, 0) );
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(#ffffff));
 	bottom: 0; 
 	}
                 
 .left{
-	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(255, 255, 255, 0), #e1e1e1 );
-	background-image: -webkit-gradient(linear, left center, right center, from(#e1e1e1), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(255, 255, 255, 0), #ffffff );
+	background-image: -webkit-gradient(linear, left center, right center, from(#ffffff), to(rgba(255, 255, 255, 0)));
 	left: 0; 
 	}
                 
 .right{
-	background-image: -moz-linear-gradient(100% 100% 180deg, #e1e1e1, rgba(255, 255, 255, 0) );
-	background-image: -webkit-gradient(linear, right center, left center, from(#e1e1e1), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 180deg, #ffffff, rgba(255, 255, 255, 0) );
+	background-image: -webkit-gradient(linear, right center, left center, from(#ffffff), to(rgba(255, 255, 255, 0)));
 	right: 0; 
 	}
 	
