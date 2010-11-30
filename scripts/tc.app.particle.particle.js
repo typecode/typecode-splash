@@ -7,7 +7,7 @@ if(!tc){ var tc = {}; }
     var _me, o, damping;
     _me = this;
     
-    var pos,last_pos,
+    var pos,
         vel,
         frc;
     
@@ -35,7 +35,6 @@ if(!tc){ var tc = {}; }
     
     this.initialize = function(){
       _me.pos = Vector.create([o.pos.x, o.pos.y]);
-      last_pos = Vector.create([o.pos.x, o.pos.y]);
       vel = Vector.create([o.vel.x, o.vel.y]);
       frc = Vector.create([o.frc.x, o.frc.y]);
       if(o.anchored && o.anchor){
@@ -218,14 +217,8 @@ if(!tc){ var tc = {}; }
     }
     
     _me.update = function(){
-      if(_me.hovered){
-        vel = vel.add(frc.multiply(0.6));
-      } else {
-        vel = vel.add(frc);
-      }
-      
-      _me.pos = _me.pos.add(vel).multiply(0.5).add(last_pos.multiply(0.5));
-      last_pos = _me.pos;
+      vel = vel.add(frc);
+      _me.pos = _me.pos.add(vel);
     }
     
     _me.draw = function(context){
