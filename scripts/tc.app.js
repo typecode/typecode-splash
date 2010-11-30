@@ -14,18 +14,11 @@ var app = {
     app.Y = Y;
     app.Y.Node.one('title').setContent(app.name);
     app.Y.augment(app ,app.Y.EventTarget);
-    app.particle_panel = tc.particle.panel(app).render();
-    app.particle_panel.add_squares(tc.squares.squares);
-    app.handleBrowser(Y);
-  };
-
-  app.handleBrowser = function(Y) {
-    tc.util.log("app.handleBrowser");
-    app.browser = Y.UA;
-    tc.util.log(app.browser);
+    app.browser = app.Y.UA;
     if (app.browser.webkit) {
-      // webkit!!!
+      app.particle_panel = tc.particle.panel(app).render();
+      app.particle_panel.add_squares(tc.squares.squares);
     } else {
-      // not webkit :(
+      
     }
   };
