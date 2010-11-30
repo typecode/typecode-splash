@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
 body{
-	color: #808080;
-	font: normal normal 100%/100% Helvetica, Arial, Verdana, Tahoma, sans-serif; 
+  overflow:hidden; /* hiding scollbars for when the canvas is huge */
+	color: #808080; font: normal normal 100%/100% Helvetica, Arial, Verdana, Tahoma, sans-serif; 
 }
 
 .masthead { position:relative; margin:auto; }
@@ -12,7 +12,7 @@ h1,
 h1,
 .particles { position:absolute; top:0; left:0; z-index:0; }
 
-h1 { 
+h1 {
   display:none; height:204px; top:66px; 
   background-image:url("../images/typecode.png"); 
 }
