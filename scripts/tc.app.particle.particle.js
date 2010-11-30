@@ -146,6 +146,7 @@ if(!tc){ var tc = {}; }
       
       pct = (length / 1000);
       normal_distance = distance.multiply(1/length);
+      _me.norm_dist_from_anchor = (length / 100);
       frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 10 * pct;
       frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 10 * pct;
     }
@@ -205,7 +206,6 @@ if(!tc){ var tc = {}; }
     
     _me.update = function(){
       vel = vel.add(frc);
-      _me.norm_dist_from_anchor = pct;
       _me.pos = _me.pos.add(vel);
       if(_me.jitter){
         _me.pos.elements[0] += _me.jitter.x;

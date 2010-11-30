@@ -44,8 +44,8 @@ if(!tc){ var tc = {}; }
               height:_domRef.get('winHeight')
             },
             pos:{
-              x:ax+tc.util.rand(-200,200)+_domRef.get('winWidth')/2,
-              y:ay+tc.util.rand(-75,200)+75
+              x:ax+tc.util.rand(-150,150)+_domRef.get('winWidth')/2,
+              y:ay+tc.util.rand(-90,150)+90
             },
             radius:sq.s/2,
             anchored:true,
@@ -55,7 +55,7 @@ if(!tc){ var tc = {}; }
             },
             anchor_offset:{
               x:_domRef.get('winWidth')/2,
-              y:75
+              y:90
             },
             draw:function(context){
               var diameter = this.radius*2;

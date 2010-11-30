@@ -54,7 +54,7 @@ if(!tc){ var tc = {}; }
       };
       _me.anchor_offset = {
         x:size.width/2,
-        y:75
+        y:90
       }
       for(i = 0; i < _me.particles.length; i++){
         _me.particles[i]['set_anchor_offset'](_me.anchor_offset);
@@ -145,9 +145,9 @@ if(!tc){ var tc = {}; }
       
       //console.log(_me.net_energy);
       
-      if(_me.net_energy < 10){
-        opacity = (10/(_me.net_energy < 0.01 ? 0.01 : _me.net_energy))/1000;
-        
+      if(_me.net_energy < 0.2){
+        opacity = (0.2/(_me.net_energy < 0.01 ? 0.01 : _me.net_energy)/20);
+        //console.log(opacity);
         _me.context.globalAlpha = opacity - 0.01;
         _me.context.drawImage(
           _me.bg_image,
