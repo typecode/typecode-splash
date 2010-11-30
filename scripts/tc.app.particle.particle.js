@@ -17,7 +17,7 @@ if(!tc){ var tc = {}; }
       frc:{x:0,y:0},
       anchored:false,
       anchor:{x:0,y:0},
-      damping:0.95,
+      damping:0.89,
       radius:5,
       draw:function(context){
         context.beginPath();
@@ -28,7 +28,11 @@ if(!tc){ var tc = {}; }
       color:"000000",
       opacity:0.65,
       attraction_coefficient: 1.0,
-      data:{}
+      data:{},
+      anchor_offset:{
+        x:0,
+        y:0
+      }
     },options);
     
     o = this.options;
@@ -37,17 +41,23 @@ if(!tc){ var tc = {}; }
       _me.pos = Vector.create([o.pos.x, o.pos.y]);
       vel = Vector.create([o.vel.x, o.vel.y]);
       frc = Vector.create([o.frc.x, o.frc.y]);
-      if(o.anchored && o.anchor){
-        _me.anchor = Vector.create([o.anchor.x,o.anchor.y]);
-      }
-      if(o.radius){
-        _me.radius = o.radius;
-      }
+      _me.anchor = Vector.create([
+        (0+o.anchor.x+o.anchor_offset.x),
+        (0+o.anchor.y+o.anchor_offset.y)
+      ]);
+      _me.radius = o.radius;
       if(_me.options.opacity < 1.0){
-        _me.fill = "rgba("+tc.util.getRGBFromHex('r',o.color)+","+tc.util.getRGBFromHex('g',o.color)+","+tc.util.getRGBFromHex('b',o.color)+","+o.opacity+")"
+        _me.fill = "rgba("+tc.util.getRGBFromHex('r',o.color)+","+tc.util.getRGBFromHex('g',o.color)+","+tc.util.getRGBFromHex('b',o.color)+","+o.opacity+")";
       } else {
-        _me.fill = "#"+o.color
+        _me.fill = "#"+o.color;
       }
+      _me.jitter = null;
+    }
+    
+    _me.set_anchor_offset = function(offset){
+      tc.util.log('_me.set_anchor_offset');
+      _me.anchor.elements[0] = (0+o.anchor.x+offset.x);
+      _me.anchor.elements[1] = (0+o.anchor.y+offset.y);
     }
     
     _me.worker = function(new_worker){
@@ -125,22 +135,18 @@ if(!tc){ var tc = {}; }
       distance = _me.pos.subtract(_me.anchor);
       length = Math.sqrt(distance.dot(distance));
       
-      //if(length < 50){
-      //  pct = length / 50;
-      //  damping = pct;
-      //} else {
-      //  pct = 1.0 - (length / 1000);
-      //}
-      
       if(length <= 0.5){
+        // _me.jitter = {
+        //   x:tc.util.rand(-2,2),
+        //   y:tc.util.rand(-2,2)
+        // }
         return;
       }
       
-      pct = (length / 1000) * 20/_me.radius;
-      
+      pct = (length / 1000);
       normal_distance = distance.multiply(1/length);
-      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 4 * pct;
-      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 4 * pct;
+      frc.elements[0] = frc.elements[0] - normal_distance.elements[0] * 10 * pct;
+      frc.elements[1] = frc.elements[1] - normal_distance.elements[1] * 10 * pct;
     }
     
     _me.collide_with_particles = function(particles,j){
@@ -199,6 +205,11 @@ if(!tc){ var tc = {}; }
     _me.update = function(){
       vel = vel.add(frc);
       _me.pos = _me.pos.add(vel);
+      if(_me.jitter){
+        _me.pos.elements[0] += _me.jitter.x;
+        _me.pos.elements[1] += _me.jitter.y;
+        _me.jitter = null;
+      }
     }
     
     _me.draw = function(context){
