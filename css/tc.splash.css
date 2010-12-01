@@ -46,27 +46,27 @@ h1 span { display:none; }
               
 
 .top{
-	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(255, 255, 255, 0), rgba(55, 55, 55, .15) );
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(55, 55, 55, .15)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(255, 255, 255, 0), rgba(80, 80, 80, .10) );
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	top: 0;
 	left:0; 
 	}
 
 .bottom{
-	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(55, 55, 55, .15), rgba(255, 255, 255, 0) );
-	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(55, 55, 55, .15)));
+	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(80, 80, 80, .10), rgba(255, 255, 255, 0) );
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(80, 80, 80, .10)));
 	bottom: 0; 
 	}
 
 .left{
-	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(255, 255, 255, 0), rgba(55, 55, 55, .15) );
-	background-image: -webkit-gradient(linear, left center, right center, from(rgba(55, 55, 55, .15)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(255, 255, 255, 0), rgba(80, 80, 80, .10) );
+	background-image: -webkit-gradient(linear, left center, right center, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	left: 0; 
 	}
 
 .right{
-	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(55, 55, 55, .15), rgba(255, 255, 255, 0) );
-	background-image: -webkit-gradient(linear, right center, left center, from(rgba(55, 55, 55, .15)), to(rgba(255, 255, 255, 0)));
+	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(80, 80, 80, .10), rgba(255, 255, 255, 0) );
+	background-image: -webkit-gradient(linear, right center, left center, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	right: 0; 
 	}
 	
@@ -90,6 +90,7 @@ h1 span { display:none; }
 .content p em{
   color:#333333;
   font-weight:bold;
+  /*font-style:italic;*/
   font-style:normal;
 }
 /*
