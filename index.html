@@ -30,7 +30,7 @@
 		<script type="text/javascript" src="scripts/lib/includes.sylvester.src.js"></script>
 		
 		<script type="text/javascript" src="http://use.typekit.com/kmb8qqs.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		<script type="text/javascript"></script>
 		
 		<script type="text/javascript" src="scripts/tc.util.js"></script>
 		<script type="text/javascript" src="scripts/tc.app.particle.panel.js"></script>
@@ -44,6 +44,16 @@
 			'event-resize',function(Y){
 				app.initialize(Y);
 			});
+			
+			try{
+				Typekit.load({
+					loading: function() {},
+					active: function() {
+
+					},
+					inactive: function() {}
+				});
+			}catch(e){}
 			
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-13114017-1']);
