@@ -96,6 +96,11 @@ if(!tc){ var tc = {}; }
       });
       
       _context = tc.particle.context(app,_domRef,{});
+      
+      if(!_context){
+        return false;
+      }
+      
       _context.setSize({
         height:_domRef.get('winHeight'),
         width:_domRef.get('winWidth')

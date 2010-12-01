@@ -27,6 +27,11 @@ if(!tc){ var tc = {}; }
     
     this.initialize = function(){
       tc.util.log('tc.particle.context.initialize');
+      if(!_me._node.getContext){
+        app.Y.Node.one('body').addClass('fallback');
+        return false;
+      }
+      _me.context = _me._node.getContext('2d');
       _me.forces = [];
       _me.particles = [];
       _me.labels = [];
@@ -36,7 +41,8 @@ if(!tc){ var tc = {}; }
       _me.timer = null;
       _me.mouse_pos = null;
       _me.mouse_down_pos = null;
-      _me.context = _me._node.getContext('2d');
+      
+      
       _me.bounds = this.options.bounds;
       _me.net_energy = 0;
       _me.bg_image = new Image();

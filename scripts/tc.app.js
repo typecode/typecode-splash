@@ -15,9 +15,10 @@ var app = {
     app.Y.augment(app ,app.Y.EventTarget);
     if (app.Y.UA.webkit) {
       app.particle_panel = tc.particle.panel(app).render();
-      app.particle_panel.add_squares(tc.squares.squares);
+      if(app.particle_panel){
+        app.particle_panel.add_squares(tc.squares.squares);
+      }
     } else {
-      tc.util.log('Not webkit...falling back to static logo');
       app.Y.Node.one('body').addClass('fallback');
     }
   };
