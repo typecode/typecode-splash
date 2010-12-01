@@ -130,6 +130,35 @@ if(!tc){ var tc = {}; }
       }
     }
     
+    _me.bounce_off_walls = function(bounds){
+      var b_did_i_collide;
+      b_did_i_collide = false;
+      
+      if(_me.pos.elements[0] < bounds.min_x + o.radius){
+        _me.pos.elements[0] = o.radius;
+        b_did_i_collide = true;
+        vel.elements[0] = vel.elements[0] * -1.0;
+      }else if(_me.pos.elements[0] > bounds.max_x - o.radius){
+        _me.pos.elements[0] = bounds.max_x - o.radius;
+        b_did_i_collide = true;
+        vel.elements[0] = vel.elements[0] * -1.0;
+      }
+      
+      if(_me.pos.elements[1] < bounds.min_y + o.radius){
+        _me.pos.elements[1] = o.radius;
+        b_did_i_collide = true;
+        vel.elements[1] = vel.elements[1] * -1.0;
+      }else if(_me.pos.elements[1] > bounds.max_y - o.radius){
+        _me.pos.elements[1] = bounds.max_y - o.radius;
+        b_did_i_collide = true;
+        vel.elements[1] = vel.elements[1] * -1.0;
+      }
+      
+      if(b_did_i_collide){
+        vel = vel.multiply(0.3);
+      }
+    }
+    
     _me.handle_anchor = function(){
       if(!_me.anchor){ return; }
       var distance, length, pct, normal_distance;
@@ -169,35 +198,6 @@ if(!tc){ var tc = {}; }
     
     _me.add_damping = function(){
       vel = vel.multiply(damping);
-    }
-    
-    _me.bounce_off_walls = function(bounds){
-      var b_did_i_collide;
-      b_did_i_collide = false;
-      
-      if(_me.pos.elements[0] < bounds.min_x + o.radius){
-        _me.pos.elements[0] = o.radius;
-        b_did_i_collide = true;
-        vel.elements[0] = vel.elements[0] * -1.0;
-      }else if(_me.pos.elements[0] > bounds.max_x - o.radius){
-        _me.pos.elements[0] = bounds.max_x - o.radius;
-        b_did_i_collide = true;
-        vel.elements[0] = vel.elements[0] * -1.0;
-      }
-      
-      if(_me.pos.elements[1] < bounds.min_y + o.radius){
-        _me.pos.elements[1] = o.radius;
-        b_did_i_collide = true;
-        vel.elements[1] = vel.elements[1] * -1.0;
-      }else if(_me.pos.elements[1] > bounds.max_y - o.radius){
-        _me.pos.elements[1] = bounds.max_y - o.radius;
-        b_did_i_collide = true;
-        vel.elements[1] = vel.elements[1] * -1.0;
-      }
-      
-      if(b_did_i_collide){
-        vel = vel.multiply(0.3);
-      }
     }
     
     _me.update = function(){
