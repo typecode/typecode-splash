@@ -78,6 +78,8 @@ h1 span { display:none; }
 	display:block;
 	position:relative;
 	z-index:100;
+	
+	opacity:0;
 }
 
 .content p {
