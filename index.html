@@ -42,18 +42,23 @@
 			
 			YUI().use('io','json','node','event-custom','node-event-simulate','util',
 			'event-resize', 'anim', function(Y){
+				
 				app.initialize(Y);
+				
+				try{
+					Typekit.load({
+						loading: function() {},
+						active: function() {
+							tc.util.log('!!!')
+							app.fadeInContent();
+						},
+						inactive: function() {}
+					});
+				}catch(e){}
+				
 			});
 			
-			try{
-				Typekit.load({
-					loading: function() {},
-					active: function() {
-
-					},
-					inactive: function() {}
-				});
-			}catch(e){}
+			
 			
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-13114017-1']);

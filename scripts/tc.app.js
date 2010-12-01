@@ -20,7 +20,6 @@ var app = {
       tc.util.log('Not webkit...falling back to static logo');
       app.Y.Node.one('body').addClass('fallback');
     }
-    app.fadeInContent();
   };
   
   app.fadeInContent = function() {
@@ -30,7 +29,5 @@ var app = {
         opacity: 1
       }
     });
-    //fadeIn.set('duration', );
-    
     fadeIn.run();
   };
