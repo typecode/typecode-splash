@@ -202,6 +202,10 @@ if(!tc){ var tc = {}; }
     
     _me.update = function(){
       vel = vel.add(frc);
+      
+      
+      //_me.norm_dist_from_anchor = (length / 100);
+      
       _me.pos = _me.pos.add(vel);
       if(_me.jitter){
         _me.pos.elements[0] += _me.jitter.x;
