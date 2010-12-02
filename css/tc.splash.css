@@ -78,7 +78,6 @@ h1 span { display:none; }
 	display:block;
 	position:relative;
 	z-index:100;
-	
 	opacity:0;
 }
 
@@ -128,4 +127,18 @@ h1 span { display:none; }
 	top:1px;
 	left:1px;
 	outline:0;
+}
+
+.browser-hint{
+  position:fixed;
+  left:10px;
+  bottom:10px;
+  z-index:10000;
+  font-size:0.8em;
+  opacity:0;
+}
+
+.browser-hint a{
+  color: #6198bf;
+	text-decoration:none;
 }

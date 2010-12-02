@@ -32,7 +32,7 @@ if(!tc){ var tc = {}; }
     this.add_squares = function(arr){
       var i;
       for(i = 0; i < arr.length; i++){
-        if(arr[i].s < 2){ return; }
+        if(arr[i].s < app.smallest_particle){ return; }
         (function(sq){
           var i, j, ax, ay;
           ax = ( sq.x );

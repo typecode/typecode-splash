@@ -140,7 +140,7 @@ if(!tc){ var tc = {}; }
     
     function _draw(){
       //tc.util.log('tc.particle.context[_me.draw]');
-      var opacity, i;
+      var opacity, i, alpha;
       
       _me.context.globalAlpha = 1;
       _me.context.fillStyle = 'rgba(252,252,252,0.5)';
@@ -161,7 +161,13 @@ if(!tc){ var tc = {}; }
         );
       }
       
-      _me.context.globalAlpha = 1 - opacity + 0.01;
+      if(opacity){
+        alpha = 1 - opacity + 0.01;
+      } else {
+        alpha = 1;
+      }
+      
+      _me.context.globalAlpha = alpha;
       
       for(i = 0; i < _me.particles.length; i++){
         _me.particles[i].draw(_me.context);
