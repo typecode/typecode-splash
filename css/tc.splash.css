@@ -5,6 +5,9 @@ body{
 	color: #707070; font: normal normal 100%/100% Helvetica, Arial, Verdana, Tahoma, sans-serif; 
 }
 
+::-moz-selection { background-color:#888888; color:#fdfdfd; }
+::selection { background-color:#888888; color:#fdfdfd; }
+
 .masthead { position:relative; margin:auto; }
 h1,
 .fallback .masthead { width:715px; }
