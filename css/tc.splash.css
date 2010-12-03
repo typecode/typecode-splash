@@ -100,8 +100,8 @@ h1 span { display:none; }
 .content a{
 	color: #6198bf;
 	text-decoration:none;
-	padding: 3px 10px 5px 10px;
-	margin: 0 -3px 0 -3px;
+	padding: 2px 7px 3px 7px;
+	margin: 0 0px 0 -4px;
 	position: relative;
 	z-index:10000;
 	right:0;
