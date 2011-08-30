@@ -1,14 +1,45 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US">
+	
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Type/Code</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="description" content="Type/Code is a collective of similar-minded emerging designers, developers, and artists bridging the gap between Technology and Design." /> 
+		<meta name="keywords" content="type, code, typecode, design, technology, parsons, web, interactive, media, typography, typeface, UX, UI, code, CSS, motion, graphics, art, artist, developer, development, critique, aesthetics, new, york, NYC, erik, carter, zeke, shore, andrew, mahon, lucas, sharp, lev, kanter, axel, esquite, ryan, riegner, visualization, information, communication, freelance, studio" />
+		
 		<link href="css/tc.reset.css" rel="stylesheet" type="text/css" />
 		<link href="css/tc.splash.css" rel="stylesheet" type="text/css" />
 		
-		<meta name="description" content="Type/Code is a collective of similar-minded emerging designers, developers, and artists bridging the gap between Technology and Design." /> 
-		<meta name="keywords" content="type, code, typecode, design, technology, parsons, web, interactive, media, typography, typeface, UX, UI, code, CSS, motion, graphics, art, artist, developer, development, critique, aesthetics, new, york, NYC, erik, carter, zeke, shore, andrew, mahon, lucas, sharp, lev, kanter, axel, esquite, ryan, riegner, visualization, information, communication, freelance, studio" /> 
+		<script type='text/javascript'>
+			var page = {
+				features:[],
+				env:{
+					typekit:'not-loaded',
+					ga_account:''
+				}
+			};
+		</script>
+		
+		<!-- Load TypeKit -->
+		<script type="text/javascript" src="http://use.typekit.com/kmb8qqs.js"></script>
+		<script type="text/javascript">
+			try{
+				Typekit.load({
+					loading: function() {},
+					active: function() {
+						page.env.typekit = 'loaded';
+					},
+					inactive: function() {}
+				});
+			}catch(e){}
+		</script>
+		
+		<script type='text/javascript' src='./js/lib/typecode-js/tc.google_analytics.header.js'></script>
+		
 	</head>
+		
+		
 	<body>
 		<div class='masthead'>
 			<h1><span>Type/Code</span></h1>
@@ -22,59 +53,53 @@
 			<div class="right"></div>
 		</div>
 		
-		<div class="content">
+		<div class="content" style='opacity:0.0;'>
 			<p>We are <em>Type/Code</em>. We design things and make them come to life.<br/> We just opened our doors, so a full website is still in the oven.</p>
-			
+			<p>In the mean time, take a gander at a pdf of <a href="http://files.typeslashcode.com/tc.generalportfolio.pdf">some of our work.</a></p>
 			<p>Check out <a href="http://blog.typeslashcode.com">our blog</a> and follow us <a href="http://twitter.com/typecode">@typecode</a></p>
-			
 			<p>Drop us a line: <a href="mailto:hello@typeslashcode.com">hello@typeslashcode.com</a></p>
 		</div>
 		
-		<p class='browser-hint'>This works best on Google <a href='http://www.google.com/chrome/'>Chrome</a>.</p>
+		<p class='browser-hint' style='opacity:0.0;display:none;'>This works best on Google <a href='http://www.google.com/chrome/' target='_blank'>Chrome</a> or Mozilla <a href='http://www.mozilla.org/en-US/firefox/new/' target='_blank'>Firefox.</a></p>
 		
-		<script type="text/javascript" src="http://yui.yahooapis.com/combo?3.2.0/build/yui/yui-min.js&3.2.0/build/json/json-min.js&3.2.0/build/oop/oop-min.js&3.2.0/build/event-custom/event-custom-min.js&3.2.0/build/event/event-base-min.js&3.2.0/build/dom/dom-min.js&3.2.0/build/dom/dom-style-ie-min.js&3.2.0/build/pluginhost/pluginhost-min.js&3.2.0/build/node/node-min.js&3.2.0/build/event/event-delegate-min.js&3.2.0/build/querystring/querystring-stringify-simple-min.js&3.2.0/build/queue-promote/queue-promote-min.js&3.2.0/build/datatype/datatype-xml-min.js&3.2.0/build/io/io-min.js&3.2.0/build/event-simulate/event-simulate-min.js&3.2.0/build/node/node-event-simulate-min.js"></script>
-		<script type="text/javascript" src="scripts/lib/excanvas.compiled.js"></script>
-		<script type="text/javascript" src="scripts/lib/includes.sylvester.src.js"></script>
+		<!-- JSON2, Hosted Locally, https://github.com/douglascrockford/JSON-js -->
+		<script type='text/javascript' src='./js/lib/json2.js'></script>
 		
-		<script type="text/javascript" src="http://use.typekit.com/kmb8qqs.js"></script>
-		<script type="text/javascript"></script>
+		<!-- jQuery 1.6.2, Hosted Locally -->
+		<script type='text/javascript' src='./js/lib/jquery-1.6.2.min.js'></script>
 		
-		<script type="text/javascript" src="scripts/tc.util.js"></script>
-		<script type="text/javascript" src="scripts/tc.app.particle.panel.js"></script>
-		<script type="text/javascript" src="scripts/tc.app.particle.context.js"></script>
-		<script type="text/javascript" src="scripts/tc.app.particle.particle.js"></script>
-		<script type="text/javascript" src="scripts/tc.app.squares.js"></script>
-		<script type="text/javascript" src="scripts/tc.app.js"></script>
-		<script type="text/javascript" charset="utf-8">
-			
-			YUI().use('io','json','node','event-custom','node-event-simulate','util',
-			'event-resize', 'anim', function(Y){
-				
-				app.initialize(Y);
-				
-				try{
-					Typekit.load({
-						loading: function() {},
-						active: function() {
-							tc.util.log('!!!')
-							app.fadeInContent();
-						},
-						inactive: function() {}
-					});
-				}catch(e){}
-				
-			});
-			
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', 'UA-13114017-1']);
-			_gaq.push(['_trackPageview']);
-			
-			(function() {
-				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-			})();
-			
-		</script>
+		<!-- jQuery Easing 1.3 -->
+		<script type='text/javascript' src='./js/lib/jquery.easing.1.3.js'></script>
+		
+		<!-- ExCanvas - canvas for IE http://excanvas.sourceforge.net/  -->
+		<script type="text/javascript" src="./js/lib/excanvas_r3/excanvas.js"></script>
+		
+		<!-- Sylvester - Vector Math http://sylvester.jcoglan.com/ -->
+		<script type="text/javascript" src="./js/lib/sylvester-0-1-3/sylvester.src.js"></script>
+		
+		<!-- Type/Code Libraries -->
+		<script type='text/javascript' src='./js/lib/typecode-js/tc.seed.js'></script>
+		<script type='text/javascript' src='./js/lib/typecode-js/tc.google_analytics.js'></script>
+		<script type='text/javascript' src='./js/lib/typecode-js/tc.color.js'></script>
+		<script type='text/javascript' src='./js/lib/typecode-js/tc.browser_detection.js'></script>
+		<script type='text/javascript' src='./js/lib/typecode-js/particle/tc.particle.context.js'></script>
+		<script type='text/javascript' src='./js/lib/typecode-js/particle/tc.particle.particle.js'></script>
+		
+		
+		<!-- Application -->
+		<script type='text/javascript' src='./js/app.js'></script>
+		
+		<!-- Application Features -->
+		<script type='text/javascript' src='./js/app/feature.panel.js'></script>
+		<script type='text/javascript' src='./js/app/feature.content.js'></script>
+		<script type='text/javascript' src='./js/app/feature.data.js'></script>
+		<script type='text/javascript' src='./js/app/feature.browser_detection.js'></script>
+		
+		<!-- <script type="text/javascript" src="js/tc.app.particle.panel.js"></script>
+		<script type="text/javascript" src="js/tc.app.particle.context.js"></script>
+		<script type="text/javascript" src="js/tc.app.particle.particle.js"></script>
+		<script type="text/javascript" src="js/tc.app.squares.js"></script>
+		<script type="text/javascript" src="js/tc.app.js"></script>-->
+		
 	</body>
 </html>

@@ -24,13 +24,7 @@ h1 span { display:none; }
 .fallback h1 { display:block; }
 .fallback .particles { display:none; }
 
-/*
-.vignette{
-	position: fixed;
-	top:0;
-	left:0;
-	
-}*/
+#particle-panel { position:absolute; top:0px; left:0px; }
          
 .top, .bottom, .left, .right{
 	height: 100%;
@@ -38,40 +32,36 @@ h1 span { display:none; }
 	z-index: 9999;
 	width: 100%;
 	/*display:none;*/
-	}
+}
              
 
-.top, .bottom{
-	height: 10%; }
-                
-.left, .right{
-	width: 15%; }
+.top, .bottom{ height: 10%; }                
+.left, .right{ width: 15%; }
               
-
 .top{
 	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(255, 255, 255, 0), rgba(80, 80, 80, .10) );
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	top: 0;
 	left:0; 
-	}
+}
 
 .bottom{
 	background-image: -moz-linear-gradient(100% 100% 90deg, rgba(80, 80, 80, .10), rgba(255, 255, 255, 0) );
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(255, 255, 255, 0)), to(rgba(80, 80, 80, .10)));
 	bottom: 0; 
-	}
+}
 
 .left{
 	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(255, 255, 255, 0), rgba(80, 80, 80, .10) );
 	background-image: -webkit-gradient(linear, left center, right center, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	left: 0; 
-	}
+}
 
 .right{
 	background-image: -moz-linear-gradient(100% 100% 180deg, rgba(80, 80, 80, .10), rgba(255, 255, 255, 0) );
 	background-image: -webkit-gradient(linear, right center, left center, from(rgba(80, 80, 80, .10)), to(rgba(255, 255, 255, 0)));
 	right: 0; 
-	}
+}
 	
 
 .content{
@@ -81,7 +71,6 @@ h1 span { display:none; }
 	display:block;
 	position:relative;
 	z-index:100;
-	opacity:0;
 }
 
 .content p {
@@ -138,7 +127,6 @@ h1 span { display:none; }
   bottom:10px;
   z-index:10000;
   font-size:0.8em;
-  opacity:0;
 }
 
 .browser-hint a{

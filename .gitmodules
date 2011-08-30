@@ -1,0 +1,3 @@
+[submodule "js/lib/typecode-js"]
+	path = js/lib/typecode-js
+	url = https://typecode@github.com/typecode/typecode-js.git
